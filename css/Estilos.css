@@ -1,0 +1,327 @@
+body{
+  background: url(../img/fondo.gif)fixed; /* Fondo general*/
+  background-size: cover; /* Fondo tipo portada*/
+}
+nav{ /* Caracteristicas de la barra de navehacion*/
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-bottom: 8px solid black;
+  border-radius: 12px;
+}
+p{
+  font-family: 'comic sans ms';
+  font-size: 1.5vw;
+  color: white;
+}
+iframe{
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px black;
+}
+h2{
+  font-family: 'comic sans ms';
+  font-size: 1.8vw;
+  color: white;
+  text-shadow: 1px 1px 5px white, 1px 1px 10px white;
+}
+.nav-item{ /*Caracteristicas de los items de la barra de navegacion*/
+  font-family: 'comic sans ms';
+  font-size: 2vmax;
+  margin: 0px 4px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border-bottom: 8px solid black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+.nav-item:hover{  /*Efecto de cambio de fondo de los items de la barra de navegacion*/
+  background: linear-gradient( 180deg, #1468F1, #001A8D,#1468F1);
+  box-shadow: 0px 0px 15px white;
+}
+.nav-item:active{ /*Efecto de cambio de fondo de los items de la barra de navegacion al precionar clic*/
+  border-bottom:1px solid #0045A6;
+  box-shadow: 0px 0px 15px blue;
+}
+.Interaccion{ /*Caracteristicas del contenedor total*/
+  overflow: hidden;
+}
+.Titulos_pagina{
+  font-family: 'comic sans ms';
+  font-size: 3vw;
+  color: white;
+  text-shadow: 1px 1px 5px white, 1px 1px 10px white;
+  margin-bottom: 50px;
+}
+.Informacion{ /*Caracteristicas del recuadro principal*/
+  height: 1760px;
+  border: 0px solid black;
+  margin-top: 15px;
+  float: left;
+  border-radius: 25px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 30px black;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+}
+.Imagenes{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  width: 80%;
+  margin: 50px 0;
+}
+#instalaciones{
+  width: 100%;
+  border-radius: 10px;
+}
+#instalaciones:hover{
+  transform: scale(1.15);
+  box-shadow: 1px 1px 15px black;
+}
+#social{
+  width: 80%;
+  height: 25%;
+  border-radius: 20px;
+}
+#social:hover{
+  transform: scale(1.15);
+  box-shadow: 1px 1px 15px black;
+}
+.poster1{ /*Caracteristicas del recuadro1 (por definir)*/
+  height: 400px;
+  border: 0px solid black;
+  float: right;
+  margin-top: 15px;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-radius: 25px;
+  margin-bottom: 50px;
+
+  box-shadow: 0px 0px 30px black;
+}
+.Uniforme{    /*Caracteristicas del recuadro de uniforme*/
+  height: 400px;
+  border: 0px solid black;
+  float: right;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-radius: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 30px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#uniforme{
+  width: 80%;
+  height: 85%;
+  border-radius: 25px;
+}
+#uniforme:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 1px 1px 15px black;
+}
+.poster3{    /*Caracteristicas del recuadro3 (por definir)*/
+  height: 400px;
+  border: 0px solid black;
+  float: right;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-radius: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 30px black;
+}
+.Contactos{ /*Caracteristicas del recuadro de contactos*/
+  height: 400px;
+  border: 0px solid black;
+  float: right;
+  margin-top: 10px;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-radius: 25px;
+  box-shadow: 0px 0px 50px black;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+.Contactos h3{     /*Titulo de contactos*/
+  margin-top: -90px;
+  text-align: center;
+  border: 2px solid black;
+  padding: 10px 0px;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+  border-radius: 25px;
+  font-size: 1.8vw;
+  font-family: 'comic sans ms';
+  color: white;
+  box-shadow: 0px 0px 10px black;
+}
+.btn_contact{   /*Botones de contactos*/
+  margin-top: 30px;
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px 17px;
+  border-radius: 25px;
+  font-size: 1.8vw;
+  font-family: 'comic sans ms';
+  color: white;
+  box-shadow: 0px 0px 10px black;
+  border-bottom: 8px solid black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+.btn_contact:hover{ /*Efecto de cambio de fondo botones contactos*/
+  background: linear-gradient( 180deg, #1468F1, #001A8D,#1468F1);
+}
+.btn_contact:active{ /*Efecto de cambio de fondo botones contactos al presionar clic*/
+  box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	border-bottom:1px solid #0045A6;
+  text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+}
+.cursos{
+  height: 320px;
+  margin-bottom: 50px;
+  border: 1px solid black;
+}
+.Asignacion{ /*Botonen de asignar citas*/
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px 17px;
+  border-radius: 15px;
+  font-size: 1.8vw;
+  font-family: 'comic sans ms';
+  color: white;
+  box-shadow: 0px 0px 10px black;
+  border-bottom: 8px solid black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+.Asignacion:hover{ /*Efecto de cambio de fondo botones asignar citas*/
+  background: linear-gradient( 180deg, #1468F1, #001A8D,#1468F1);
+}
+.Asignacion:active{ /*Efecto de cambio de fondo botones asignar citas al presionar clic*/
+  box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	border-bottom:1px solid #0045A6;
+  text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+}
+.Decidir{ /*Contenedor de la decision*/
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+}
+.Decidir button{ /*Margen a botones*/
+  margin: 10px 0;
+}
+.Administrador{ /*Contenedor de registro de Administrador*/
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+}
+.Administrador button{ /*Margen a botones*/
+  margin: 10px 0;
+}
+.Usuario{ /*Contenedor de registro de usuarios*/
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+}
+.Usuario button{ /*Margen a botones*/
+  margin: 10px 0;
+}
+.Form_Datos{ /*formato a los formularios Administrador y Usuario*/
+  border: 0px solid black;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+.Datos{ /*formato a los campos de registro Administrador y Usuario*/
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+}
+.Tabla{ /*Contenedor de la tabla de citas*/
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+}
+.Tabla_citas{ /*parametros de la tabla*/
+  margin-top: 1px;
+  margin-bottom: 20px;
+  border: 2px solid black;
+}
+.td{ /*parametros del interior de la tabla*/
+  border: 1px solid black;
+  color: white;
+  font-family: 'comic sans ms';
+  font-size: 1.2vw;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+.Consulta{ /*Contenedor de consultas*/
+  margin: auto;
+  text-align: center;
+  padding: 20px 0 ;
+  border: 0px solid black;
+  margin-top: 15px;
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  border-radius: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0px 0px 30px black;
+}
+.Form_Consulta{ /*formato del formulario Consulta*/
+  margin: auto;
+  border: 0px solid black;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+.Botones{
+  width: 100%;
+}
+.Tabla_Con{ /*parametros de la tabla*/
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 2px solid black;
+}
+.td{ /*parametros del interior de la tabla*/
+  border: 1px solid black;
+  color: white;
+  font-family: 'comic sans ms';
+  font-size: 1.2vw;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+footer{ /*Caracteristicas del footer*/
+  text-align: center;
+  border: 0px solid black;
+  margin-top: 50px;
+  font-family: 'comic sans ms';
+  font-size: 1.8vw;
+  color: black;
+  text-shadow: 5px 5px 15px white;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!--Para aceptar caracteres especiales-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Para la visualizacion del contenido autoajustable-->
+  <link rel="stylesheet" href="css/Estilos.css"> <!--Estilos creados a mano-->
+  <link rel="stylesheet" href="css/bootstrap.min.css"> <!--Estilos del bootstrap-->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script> <!--Scripts de bootstrap-->
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> <!--llamado del jquery-->
+  <script src="https://kit.fontawesome.com/f959a384d4.js" crossorigin="anonymous"></script> <!--llamado de pagina de iconos-->
+  <title>La casita de los niños</title>
+</head>
+<body>
+    <div class="img text-center"> <!--contenedor de la imagen alineada al centro-->
+      <img src="img/LOGO.png" class="img-fluid" alt="Logo del jardin">
+    </div>
+    <nav class="navbar navbar-expand-md navbar navbar-dark m-auto col-12 col-xl-9 "> <!--Barra de navegacion-->
+      <button class="navbar-toggler m-auto mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> <!--Codigo de bootstrap para que la barra de navegacion cambie-->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01"> <!--Contenedor de los items de la barra de navegacion-->
+      <div class="navbar-nav m-auto text-center">
+          <a class="nav-item nav-link"  href="Index.html">Inicio</a>
+          <a class="nav-item nav-link active" href="Quienes_somos.html">Quienes somos</a>
+          <a class="nav-item nav-link" href="Instalaciones.html">Nuestras instalaciones</a>
+          <a class="nav-item nav-link" href="Matriculas.html">Matriculas</a>
+          <a class="nav-item nav-link" href="Contactos.html">Contactanos</a>
+        </div>
+      </div>
+    </nav>
+    <div class="Interaccion m-auto col-12 col-xl-9"> <!--Contenedor de los items de interaccion-->
+      <div class="Informacion col-12 col-xxl-8"> <!--Recuadro principal-->
+
+      </div>
+      <div class="poster1 col-12 col-xl-12 col-xxl-3">
+
+      </div>
+      <div class="Uniforme col-12 col-xl-12 col-xxl-3"> <!--Recuadro de la imagen del uniforme-->
+        <img src="img/Niño.png" id="uniforme" onclick="location.href='instalaciones.html'">
+      </div>
+      <div class="Uniforme col-12 col-xl-12 col-xxl-3">
+        <img src="img/Niña.png" id="uniforme" onclick="location.href='instalaciones.html'">
+      </div>
+      <div class="Contactos col-12 col-xl-12 col-xxl-3"> <!--Recuadro de los contactos-->
+        <h3 class="col-10">CONTACTOS</h3>
+        <button class="btn_contact col-10 col-md-10 col-lg-10 col-xl-10 col-xxl-11" onclick="location.href='tel:+573106782242'"><i class="fas fa-phone-volume"></i>  3106782242</button>
+        <button class="btn_contact col-10 col-md-10 col-lg-10 col-xl-10 col-xxl-11" onclick="location.href='#'"><i class="fab fa-facebook-f"></i>  Facebook</button>
+        <button class="btn_contact col-10 col-md-10 col-lg-10 col-xl-10 col-xxl-11" onclick="location.href='mailto:Luzmyhm.70@gmail.com?subject=Solicito%20informacion%20por%20este%20medio.'"><i class="fas fa-envelope-square"></i>  Escribenos</button>
+      </div>
+    </div>
+  <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
+</body>
+</html>
