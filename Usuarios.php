@@ -41,6 +41,7 @@
       </form>
     </div>
   <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
 
@@ -70,10 +71,8 @@ strlen($_POST['Telefono']) >= 1 && strlen($_POST['Correo']) >= 1 && strlen($_POS
   '$_POST[Correo]','$_POST[Curso]','$_POST[NombreAl]')")
 
   or die("Problema");
-
-  echo"<script>
-  alert('Datos insertados');
-  location.href='Index.html'
-  </script>";
+?>
+  <script src="js/SweetAlert.js"></script>
+  <?php
 }
  ?>
