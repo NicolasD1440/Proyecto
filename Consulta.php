@@ -44,7 +44,7 @@
           $resultado = mysqli_query($conexion, $sql);
           $mostrar = mysqli_fetch_array($resultado);
           ?>
-        <tr>  //Visualizacion de datos segun consulta
+        <tr>  <?php // visualisacion de datos de consulta ?>
           <td class="td"><?php echo $mostrar['Fecha'] ?></td>
           <td class="td"><?php echo $mostrar[''] ?></td>
           <td class="td"><?php echo $mostrar['NombreP'] ?></td>
