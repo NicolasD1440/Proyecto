@@ -12,16 +12,16 @@
 <body>
     <div class="Consulta col-8"> <!--contenedor de la decicion-->
       <img src="img/LOGO.png" class="img-fluid" alt="Logo del jardin">
-      <p>Ingrese su nombre para consultar</p>
+      <p>Ingrese su ID de para consultar</p>
       <form class="Form_Consulta col-11 text-center" action="Consulta.php" method="post">
-        <input type="text" name="NombreCon" placeholder="Nombre" class="Datos col-10" required>
+        <input type="text" name="ID_Con" placeholder="ID de consulta" class="Datos col-10" required><!--Peticion del ID a consultar-->
         <div class="Botones">
         <input type="submit" name="Consultar" value="Consultar" class="Asignacion col-5">
         <button type="button" class="Asignacion col-5" onclick="location.href='Decision.html'">Volver</button>
        </div>
       </form>
 
-      <table class="Tabla_Con col-11 text-center">
+      <table class="Tabla_Con col-11 text-center"><!--Creacion de la tabla a mostrar-->
         <tr>
           <td class="td">Fecha</td>
           <td class="td">Hora</td>
@@ -34,15 +34,17 @@
           <td class="td">Alumno</td>
 
         </tr>
-        <?php
+        <?php // Cominzo de la logica
         error_reporting(0);
-          require_once("Conexion.php");
-          $Nombre = $_POST['NombreCon'];
-          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl  INNER JOIN profesores ON usuarios.Curso = profesores.Curso WHERE usuarios.Nombre LIKE '$Nombre' ";
+          require_once("Conexion.php"); //Utilizamos el archivo de la conexion
+          $ID = $_POST['ID_Con'];
+          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl
+                                         INNER JOIN profesores ON usuarios.Curso = profesores.Curso
+                                         WHERE usuarios.Id_usuario LIKE '$ID' "; //Consulta a realizar con las tablas enlazadas
           $resultado = mysqli_query($conexion, $sql);
           $mostrar = mysqli_fetch_array($resultado);
           ?>
-        <tr>
+        <tr>  //Visualizacion de datos segun consulta
           <td class="td"><?php echo $mostrar['Fecha'] ?></td>
           <td class="td"><?php echo $mostrar[''] ?></td>
           <td class="td"><?php echo $mostrar['NombreP'] ?></td>
@@ -53,9 +55,8 @@
           <td class="td"><?php echo $mostrar['Curso'] ?></td>
           <td class="td"><?php echo $mostrar['NombreAl'] ?></td>
         </tr>
-
       </table>
     </div>
-  <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
+<footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
 </body>
 </html>
