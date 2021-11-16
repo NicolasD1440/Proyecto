@@ -49,6 +49,7 @@
       }
          ?>
       </table>
+      <button type="button" class="Asignacion col-5" onclick="location.href='Eliminar.php'">Eliminar</button>
       <button class="Asignacion" type="button" name="button" onclick="location.href='Index.html'">Salir</button>
     </div>
   <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
