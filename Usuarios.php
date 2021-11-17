@@ -75,9 +75,20 @@ error_reporting(0);
     </script>"
   );//Mensaje de error en aluno
 
-    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Fecha, Nombre, Apellido, Direccion, Telefono, Correo, Curso, NombreAl)
-    VALUES ('$ID','$Fecha','$_POST[Nombre]','$_POST[Apellidos]','$_POST[Direccion]',' $_POST[Telefono] ',
-    '$_POST[Correo]','$_POST[Curso]','$_POST[NombreAl]')")//Insercion de datos en la tabla usuarios
+    mysqli_query($conexion,"INSERT INTO citas (Fecha, Hora)
+    VALUES ('$Fecha','8:50')")//Insercion de datos en la tabla citas
+
+    or die("
+    <script>
+      Swal.fire({
+        title: 'Problema al registrar los datos cita',
+        icon: 'error',
+      });
+    </script>");//Mensaje de error en citas
+
+    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Nombre, Apellido, Direccion, Telefono, Correo, Curso, NombreAl,Fecha)
+    VALUES ('$ID','$_POST[Nombre]','$_POST[Apellidos]','$_POST[Direccion]',' $_POST[Telefono] ',
+    '$_POST[Correo]','$_POST[Curso]','$_POST[NombreAl]','$Fecha')")//Insercion de datos en la tabla usuarios
 
     or die("
     <script>
@@ -92,10 +103,16 @@ error_reporting(0);
     Swal.fire({
       title: 'Datos registrados',
       text: 'Su ID de consulta es: ' + <?php echo utf8_decode($ID)?>,
-      icon: 'success',
-    });
-  </script>//ventana emergente de confirmacion
+      icon: 'success'
 
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        location.href="Decision.html";
+        mysqli_free_result("Usuarios.php");
+      }
+    });
+  </script><?php // Ventana emergente de confirmacion ?>
   <?php
 }
  ?>
