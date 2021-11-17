@@ -46,22 +46,39 @@ $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){
+?>
+  <script type="text/javascript">
+      Swal.fire({
+        title: 'Bienvenido',
+        text: 'Admin',
+        icon: 'success',
 
-    echo"<script>
-alert('BIENVENIDO ADMIN');
-location.href='Tabla_citas.php'
-</script>";
+      }).then((result) => {
 
-
+        if (result.isConfirmed) {
+          location.href="Tabla_citas.php";
+          mysqli_free_result("Admin.php");
+        }
+      });
+    </script>;
+<?php
 }else{
     ?>
-    <?php
-   echo"<script>
-alert('ERROR DE AUTENTIFICACION');
-location.href='Admin.php'
-</script>";
+    <script type="text/javascript">
+        Swal.fire({
+          title: 'Error al ingresar',
+          text: 'verifique sus datos',
+          icon: 'error',
 
+        }).then((result) => {
 
+          if (!result.isConfirmed) {
+            location.href="Admin.php";
+            mysqli_free_result("Admin.php");
+          }
+        });
+      </script>;
+  <?php
 }
 }
 mysqli_free_result($resultado);
