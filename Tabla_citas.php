@@ -14,7 +14,9 @@
       <img src="img/LOGO.png" class="img-fluid" alt="Logo del jardin">
       <table class="Tabla_citas col-11 text-center">
         <tr>
+          <td class="td">ID</td>
           <td class="td">Fecha</td>
+          <td class="td">Hora</td>
           <td class="td">Docente</td>
           <td class="td">Nombres</td>
           <td class="td">Apellidos</td>
@@ -34,7 +36,9 @@
           while ($mostrar = mysqli_fetch_array($resultado)) {
           ?>
         <tr>
+          <td class="td"><?php echo $mostrar['Id_usuario'] ?></td>
           <td class="td"><?php echo $mostrar['Fecha'] ?></td>
+          <td class="td"><?php echo $mostrar[''] ?></td>
           <td class="td"><?php echo $mostrar['NombreP'] ?></td>
           <td class="td"><?php echo $mostrar['Nombre'] ?></td>
           <td class="td"><?php echo $mostrar['Apellido'] ?></td>
@@ -49,8 +53,8 @@
       }
          ?>
       </table>
-      <button type="button" class="Asignacion col-5" onclick="location.href='Eliminar.php'">Eliminar</button>
-      <button class="Asignacion" type="button" name="button" onclick="location.href='Index.html'">Salir</button>
+      <button type="button" class="Asignacion col-5" onclick="location.href='Eliminar.php'">Eliminar</button><br>
+      <button class="Asignacion col-5" type="button" name="button" onclick="location.href='Index.html'">Salir</button>
     </div>
   <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
 </body>
