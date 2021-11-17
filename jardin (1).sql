@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2021 a las 06:02:41
+-- Tiempo de generación: 17-11-2021 a las 14:54:38
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `Admin`, `Contraseña`) VALUES
-(1, 'Cristian', '201995');
+(2, 'Admin', '12345');
 
 -- --------------------------------------------------------
 
@@ -57,11 +57,26 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`NombreAl`, `ApellidoAl`, `Edad`) VALUES
-('Cristian', 'Wilches', 1),
-('Daniel', 'Tocora', 1),
-('Ivonne', 'Tocora', 3),
-('Lian', 'Suarez', 1),
-('Luz', 'Wilches', 12);
+('Daniel', 'Wilches', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `citas`
+--
+
+CREATE TABLE `citas` (
+  `Fecha` date NOT NULL,
+  `Hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`Fecha`, `Hora`) VALUES
+('2021-11-18', '08:50:00'),
+('2021-11-20', '08:50:00');
 
 -- --------------------------------------------------------
 
@@ -93,26 +108,23 @@ INSERT INTO `profesores` (`NombreP`, `ApellidoP`, `Curso`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `Id_usuario` int(11) NOT NULL,
-  `Fecha` date NOT NULL,
+  `Id_usuario` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` text COLLATE utf8_spanish_ci NOT NULL,
   `Telefono` bigint(20) NOT NULL,
   `Correo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Curso` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `NombreAl` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `NombreAl` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id_usuario`, `Fecha`, `Nombre`, `Apellido`, `Direccion`, `Telefono`, `Correo`, `Curso`, `NombreAl`) VALUES
-(9, '2021-11-18', 'Cristian', 'cruz', 'calle falsa 123', 3106782242, 'cgcruz@hotmail.com', 'Pre jardin', 'Lian'),
-(11, '2021-11-13', 'giovani', 'Castiblanco', 'jhkfjhfksdf', 31330889392, 'Nicolas@hot.com', 'Caminadores', 'Daniel'),
-(12, '2021-11-20', 'Daniel', 'Chavez', 'Calle de las flores', 31330889392, 'Nicolas@hot.com', 'Jardin', 'Luz'),
-(13, '2021-11-05', 'Nicolas', 'Castiblanco', 'calle hot', 31215487, 'jpcruz@hotm.com', 'Jardin', 'Cristian');
+INSERT INTO `usuarios` (`Id_usuario`, `Nombre`, `Apellido`, `Direccion`, `Telefono`, `Correo`, `Curso`, `NombreAl`, `Fecha`) VALUES
+('8907', 'giovani', 'Castiblanco', 'sdfsdfsdfsdfsdf', 31330889392, 'holaquehace@nose', 'Parvulos', 'Daniel', '2021-11-20');
 
 --
 -- Índices para tablas volcadas
@@ -131,6 +143,12 @@ ALTER TABLE `alumno`
   ADD PRIMARY KEY (`NombreAl`);
 
 --
+-- Indices de la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD PRIMARY KEY (`Fecha`);
+
+--
 -- Indices de la tabla `profesores`
 --
 ALTER TABLE `profesores`
@@ -142,7 +160,8 @@ ALTER TABLE `profesores`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`Id_usuario`),
   ADD KEY `NombreAl` (`NombreAl`),
-  ADD KEY `Curso` (`Curso`);
+  ADD KEY `Curso` (`Curso`),
+  ADD KEY `Fecha` (`Fecha`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -152,13 +171,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -169,7 +182,8 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`NombreAl`) REFERENCES `alumno` (`NombreAl`),
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`Curso`) REFERENCES `profesores` (`curso`);
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`Curso`) REFERENCES `profesores` (`curso`),
+  ADD CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`Fecha`) REFERENCES `citas` (`Fecha`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
