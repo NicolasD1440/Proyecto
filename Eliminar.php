@@ -14,7 +14,7 @@
       <img src="img/LOGO.png" class="img-fluid" alt="Logo del jardin">
       <p>Escriba el ID a Eliminar</p>
       <form class="Form_Eliminar col-11 text-center" action="Eliminar.php" method="post">
-        <input type="text" name="ID_Con" placeholder="ID a eliminar" class="Datos col-10" required><!--e pide el Id del usuario a eliminar--> 
+        <input type="text" name="ID_Con" placeholder="ID a eliminar" class="Datos col-10" required><!--e pide el Id del usuario a eliminar-->
         <div class="Botones">
         <input type="submit" name="Eliminar" value="Eliminar" class="Asignacion col-5">
         <button type="button" class="Asignacion col-5" onclick="location.href='Tabla_citas.php'">Volver</button>
@@ -25,10 +25,8 @@
         error_reporting(0);
           require_once("Conexion.php"); //Utilizamos el archivo de la conexion
           $ID = $_POST['ID_Con'];
-          $sql = "DELETE usuarios, alumno FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl WHERE usuarios.Id_usuario LIKE '$ID' "; //Se seleccionan las tablas y los campos con los datos que se van a eliminar
+          $sql = "DELETE usuarios, alumno, citas FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl INNER JOIN citas ON usuarios.Fecha = citas.Fecha WHERE usuarios.Id_usuario LIKE '$ID' "; //Se seleccionan las tablas y los campos con los datos que se van a eliminar
           $resultado = mysqli_query($conexion, $sql);
-					$eliminar = mysqli_fetch_array($resultado);
-					echo "Eliminado correctamente";
 
           ?>
 
