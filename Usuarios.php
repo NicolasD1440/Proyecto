@@ -29,6 +29,7 @@
           <option>Avanzado</option>
         </select>
         <h2>Datos del alumno</h2>
+        <input type="text" name="TDI" placeholder="Numero de T.I" class="Datos col-10" required>
         <input type="text" name="NombreAl" placeholder="Nombre" class="Datos col-10" required>
         <input type="text" name="ApellidoAl" placeholder="Apellido" class="Datos col-10" required>
         <input type="text" name="Edad" placeholder="Edad" class="Datos col-10" required>
@@ -47,6 +48,7 @@
 
 <?php // Comienzo de la logica
 error_reporting(0);
+clearstatcache();
   require_once('Conexion.php');//llamado del archivo de conexion
 
   function fecha_aleatoria($formato = "Y-m-d", $limiteInferior = "2021-11-01", $limiteSuperior = "2021-11-30"){ //funcion de fecha aleatoria
@@ -55,25 +57,21 @@ error_reporting(0);
     $milisegundosAleatorios = mt_rand($milisegundosLimiteInferior, $milisegundosLimiteSuperior);
     return date($formato, $milisegundosAleatorios);
   }
-  $Fecha = fecha_aleatoria();
+   $Fecha = fecha_aleatoria();
+   $ID = mt_rand(1000, 9999); //creacion de un ID de 4 digitos aleatorio
 
-  $ID = mt_rand(1000, 9999); //creacion de un ID de 4 digitos aleatorio
+  if (!empty($_POST['Nombre'])) {
 
-  if(strlen($_POST['Nombre']) >= 1 && strlen($_POST['Apellidos']) >= 1 && strlen($_POST['Direccion']) >= 1 &&
-  strlen($_POST['Telefono']) >= 1 && strlen($_POST['Correo']) >= 1 && strlen($_POST['Curso']) >= 1 && strlen($_POST['NombreAl']) >= 1
-  && strlen($_POST['ApellidoAl']) >= 1 && strlen($_POST['Edad']) >= 1 ){ //comprobacion de campos vacios
-
-    mysqli_query($conexion,"INSERT INTO alumno (NombreAl, ApellidoAl, Edad)
+    mysqli_query($conexion,"INSERT INTO alumno (TI, NombreAl, ApellidoAl, Edad)
     VALUES ('$_POST[NombreAl]','$_POST[ApellidoAl]','$_POST[Edad]')")//Insercion de datos en la tabla alumno
 
     or die("
     <script>
       Swal.fire({
-        title: 'Problema al registrar los datos',
+        title: 'Problema al registrar los datos alumno',
         icon: 'error',
       });
-    </script>"
-  );//Mensaje de error en aluno
+    </script>");//Mensaje de error en aluno
 
     mysqli_query($conexion,"INSERT INTO citas (Fecha, Hora)
     VALUES ('$Fecha','8:50')")//Insercion de datos en la tabla citas
@@ -106,7 +104,6 @@ error_reporting(0);
       icon: 'success'
 
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         location.href="Decision.html";
       }
@@ -114,5 +111,4 @@ error_reporting(0);
   </script><?php // Ventana emergente de confirmacion ?>
   <?php
 }
-clearstatcache();
  ?>
