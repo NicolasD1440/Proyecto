@@ -47,6 +47,8 @@
 
 <?php // Comienzo de la logica
 error_reporting(0);
+//ob_clean();
+
   require_once('Conexion.php');//llamado del archivo de conexion
 
   function fecha_aleatoria($formato = "Y-m-d", $limiteInferior = "2021-11-01", $limiteSuperior = "2021-11-30"){ //funcion de fecha aleatoria
@@ -115,4 +117,5 @@ error_reporting(0);
   </script><?php // Ventana emergente de confirmacion ?>
   <?php
 }
+clearstatcache();
  ?>
