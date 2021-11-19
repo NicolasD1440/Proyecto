@@ -26,7 +26,7 @@
 </body>
 </html>
 <?php
-
+error_reporting(0);
 session_start();
 
 if (isset($_POST['Ingresar'])) {
@@ -42,7 +42,6 @@ $conexion=mysqli_connect("localhost","root","","jardin");
 
 $consulta="SELECT*FROM admin where Admin ='$usuario' and Contraseña='$contraseña'";
 $resultado=mysqli_query($conexion,$consulta);
-
 $filas=mysqli_num_rows($resultado);
 
 if($filas){
@@ -50,7 +49,7 @@ if($filas){
   <script type="text/javascript">
       Swal.fire({
         title: 'Bienvenido',
-        text: 'Admin',
+        text:  '<?php echo utf8_decode($usuario) ?>',
         icon: 'success',
 
       }).then((result) => {

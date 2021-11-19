@@ -60,10 +60,12 @@ clearstatcache();
    $Fecha = fecha_aleatoria();
    $ID = mt_rand(1000, 9999); //creacion de un ID de 4 digitos aleatorio
 
-  if (!empty($_POST['Nombre'])) {
+   if(strlen($_POST['Nombre']) >= 1 && strlen($_POST['Apellidos']) >= 1 && strlen($_POST['Direccion']) >= 1 &&
+   strlen($_POST['Telefono']) >= 1 && strlen($_POST['Correo']) >= 1 && strlen($_POST['Curso']) >= 1 && strlen($_POST['NombreAl']) >= 1
+   && strlen($_POST['ApellidoAl']) >= 1 && strlen($_POST['Edad']) >= 1 ){ //comprobacion de campos vacios
 
     mysqli_query($conexion,"INSERT INTO alumno (TI, NombreAl, ApellidoAl, Edad)
-    VALUES ('$_POST[NombreAl]','$_POST[ApellidoAl]','$_POST[Edad]')")//Insercion de datos en la tabla alumno
+    VALUES ('$_POST[TDI]','$_POST[NombreAl]','$_POST[ApellidoAl]','$_POST[Edad]')")//Insercion de datos en la tabla alumno
 
     or die("
     <script>
@@ -84,9 +86,9 @@ clearstatcache();
       });
     </script>");//Mensaje de error en citas
 
-    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Nombre, Apellido, Direccion, Telefono, Correo, Curso, NombreAl,Fecha)
+    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Nombre, Apellido, Direccion, Telefono, Correo, Curso,Fecha,TI)
     VALUES ('$ID','$_POST[Nombre]','$_POST[Apellidos]','$_POST[Direccion]',' $_POST[Telefono] ',
-    '$_POST[Correo]','$_POST[Curso]','$_POST[NombreAl]','$Fecha')")//Insercion de datos en la tabla usuarios
+    '$_POST[Correo]','$_POST[Curso]','$Fecha','$_POST[TDI]')")//Insercion de datos en la tabla usuarios
 
     or die("
     <script>

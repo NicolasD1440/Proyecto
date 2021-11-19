@@ -31,14 +31,16 @@
         <?php
         error_reporting(0);
           require_once("Conexion.php");
-          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl  INNER JOIN profesores ON usuarios.Curso = profesores.Curso ";
+          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
+                                         INNER JOIN profesores ON usuarios.Curso = profesores.Curso
+                                         INNER JOIN citas ON usuarios.fecha = citas.fecha ";
           $resultado = mysqli_query($conexion, $sql);
           while ($mostrar = mysqli_fetch_array($resultado)) {
           ?>
         <tr>
           <td class="td"><?php echo $mostrar['Id_usuario'] ?></td>
           <td class="td"><?php echo $mostrar['Fecha'] ?></td>
-          <td class="td"><?php echo $mostrar[''] ?></td>
+          <td class="td"><?php echo $mostrar['Hora'] ?></td>
           <td class="td"><?php echo $mostrar['NombreP'] ?></td>
           <td class="td"><?php echo $mostrar['Nombre'] ?></td>
           <td class="td"><?php echo $mostrar['Apellido'] ?></td>
