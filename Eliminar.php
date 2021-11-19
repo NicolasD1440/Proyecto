@@ -15,11 +15,27 @@
       <p>Escriba el ID a Eliminar</p>
       <form class="Form_Eliminar col-11 text-center" action="Eliminar.php" method="post">
         <input type="text" name="ID_Con" placeholder="ID a eliminar" class="Datos col-10" required><!--e pide el Id del usuario a eliminar-->
+
         <div class="Botones1">
+
+        <div class="Botones">
+
         <input type="submit" name="Eliminar" value="Eliminar" class="Asignacion col-5">
         <button type="button" class="Asignacion col-5" onclick="location.href='Tabla_citas.php'">Volver</button>
        </div>
       </form>
+
+
+        <?php // Comienzo de la logica
+        error_reporting(0);
+          require_once("Conexion.php"); //Utilizamos el archivo de la conexion
+          $ID = $_POST['ID_Con'];
+          $sql = "DELETE usuarios, alumno, citas FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl INNER JOIN citas ON usuarios.Fecha = citas.Fecha WHERE usuarios.Id_usuario LIKE '$ID' "; //Se seleccionan las tablas y los campos con los datos que se van a eliminar
+          $resultado = mysqli_query($conexion, $sql);
+
+          ?>
+
+
     </div>
 <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
