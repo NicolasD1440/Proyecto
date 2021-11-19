@@ -62,6 +62,18 @@ clearstatcache();
     $milisegundosAleatorios = mt_rand($milisegundosLimiteInferior, $milisegundosLimiteSuperior);
     return date($formato, $milisegundosAleatorios);
   }
+  //9-5
+  function horas(){
+    $arreglo = ["9:00","9:30","10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "1:00"
+  ,"1:30","2:00","2:30", "3:30","4:00","4:30","5:00"];
+
+  $lower = 0;
+  $upper = 15;
+  $ramdon = mt_rand($lower, $upper);
+
+  return $arreglo[$ramdon];
+  }
+   $Hora = horas();
    $Fecha = fecha_aleatoria();
    $ID = mt_rand(1000, 9999); //creacion de un ID de 4 digitos aleatorio
    $IDFech = mt_rand(100, 999);//creacion de ID de 3 digitos aleatorios
@@ -87,7 +99,7 @@ clearstatcache();
     </script>");//Mensaje de error en aluno
 
     mysqli_query($conexion,"INSERT INTO citas (IDFec, Fecha, Hora)
-    VALUES ('$IDFech','$Fecha','8:50')")//Insercion de datos en la tabla citas
+    VALUES ('$IDFech','$Fecha','$Hora')")//Insercion de datos en la tabla citas
 
     or die("
     <script>
