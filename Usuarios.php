@@ -111,7 +111,6 @@ error_reporting(0);
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         location.href="Decision.html";
-        mysqli_free_result("Usuarios.php");
       }
     });
   </script><?php // Ventana emergente de confirmacion ?>
