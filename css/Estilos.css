@@ -387,6 +387,10 @@ h2{
 .Botones{
   width: 100%;
 }
+.Botones1{
+  width: 100%;
+  padding: 30px 0;
+}
 .Tabla_Con{ /*parametros de la tabla*/
   margin: auto;
   margin-top: 30px;
