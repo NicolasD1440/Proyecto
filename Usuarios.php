@@ -115,4 +115,5 @@ error_reporting(0);
   </script><?php // Ventana emergente de confirmacion ?>
   <?php
 }
+clearstatcache();
  ?>
