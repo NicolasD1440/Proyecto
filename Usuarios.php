@@ -64,6 +64,7 @@ clearstatcache();
   }
    $Fecha = fecha_aleatoria();
    $ID = mt_rand(1000, 9999); //creacion de un ID de 4 digitos aleatorio
+   $IDFech = mt_rand(100, 999);//creacion de ID de 3 digitos aleatorios
 
    if(strlen($_POST['Nombre']) >= 1 && strlen($_POST['Apellidos']) >= 1 && strlen($_POST['Direccion']) >= 1 &&
    strlen($_POST['Telefono']) >= 1 && strlen($_POST['Correo']) >= 1 && strlen($_POST['Curso']) >= 1 && strlen($_POST['NombreAl']) >= 1
@@ -76,30 +77,45 @@ clearstatcache();
     <script>
       Swal.fire({
         title: 'Problema al registrar los datos alumno',
-        icon: 'error',
+        icon: 'error'
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href= 'Decision.html';
+        }
       });
     </script>");//Mensaje de error en aluno
 
-    mysqli_query($conexion,"INSERT INTO citas (Fecha, Hora)
-    VALUES ('$Fecha','8:50')")//Insercion de datos en la tabla citas
+    mysqli_query($conexion,"INSERT INTO citas (IDFec, Fecha, Hora)
+    VALUES ('$IDFech','$Fecha','8:50')")//Insercion de datos en la tabla citas
 
     or die("
     <script>
       Swal.fire({
         title: 'Problema al registrar los datos cita',
-        icon: 'error',
+        icon: 'error'
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href= 'Decision.html';
+        }
       });
     </script>");//Mensaje de error en citas
 
-    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Nombre, Apellido, Direccion, Telefono, Correo, Curso,Fecha,TI)
+    mysqli_query($conexion,"INSERT INTO usuarios (Id_usuario, Nombre, Apellido, Direccion, Telefono, Correo, Curso,IDFec,TI)
     VALUES ('$ID','$_POST[Nombre]','$_POST[Apellidos]','$_POST[Direccion]',' $_POST[Telefono] ',
-    '$_POST[Correo]','$_POST[Curso]','$Fecha','$_POST[TDI]')")//Insercion de datos en la tabla usuarios
+    '$_POST[Correo]','$_POST[Curso]','$IDFech','$_POST[TDI]')")//Insercion de datos en la tabla usuarios
 
     or die("
     <script>
       Swal.fire({
         title: 'Problema al registrar los datos del acudiente',
-        icon: 'error',
+        icon: 'error'
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href= 'Decision.html';
+        }
       });
     </script>");//Mensaje de error en usuarios
 ?>

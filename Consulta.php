@@ -38,15 +38,16 @@
         error_reporting(0);
           require_once("Conexion.php"); //Utilizamos el archivo de la conexion
           $ID = $_POST['ID_Con'];
-          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.NombreAl = alumno.NombreAl
+          $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
                                          INNER JOIN profesores ON usuarios.Curso = profesores.Curso
+                                         INNER JOIN citas ON usuarios.fecha = citas.fecha
                                          WHERE usuarios.Id_usuario LIKE '$ID' "; //Consulta a realizar con las tablas enlazadas
           $resultado = mysqli_query($conexion, $sql);
           $mostrar = mysqli_fetch_array($resultado);
           ?>
         <tr>  <?php // visualisacion de datos de consulta ?>
           <td class="td"><?php echo $mostrar['Fecha'] ?></td>
-          <td class="td"><?php echo $mostrar[''] ?></td>
+          <td class="td"><?php echo $mostrar['Hora'] ?></td>
           <td class="td"><?php echo $mostrar['NombreP'] ?></td>
           <td class="td"><?php echo $mostrar['Nombre'] ?></td>
           <td class="td"><?php echo $mostrar['Apellido'] ?></td>

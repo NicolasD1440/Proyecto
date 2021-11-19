@@ -33,7 +33,7 @@
           require_once("Conexion.php");
           $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
                                          INNER JOIN profesores ON usuarios.Curso = profesores.Curso
-                                         INNER JOIN citas ON usuarios.fecha = citas.fecha ";
+                                         INNER JOIN citas ON usuarios.IDfec = citas.IDFec ";
           $resultado = mysqli_query($conexion, $sql);
           while ($mostrar = mysqli_fetch_array($resultado)) {
           ?>
