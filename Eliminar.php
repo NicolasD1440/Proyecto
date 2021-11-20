@@ -37,7 +37,7 @@
       require_once("Conexion.php"); //Utilizamos el archivo de la conexion
       $ID = $_POST['ID_Con'];
       $sql = "DELETE usuarios, alumno, citas FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
-                                             INNER JOIN citas ON usuarios.fecha = citas.fecha
+                                             INNER JOIN citas ON usuarios.IDFec = citas.IDFec
                                              WHERE usuarios.Id_usuario LIKE '$ID' "; //Se seleccionan las tablas y los campos con los datos que se van a eliminar
     if(!empty($_POST['ID_Con'])){
       mysqli_query($conexion, $sql)
