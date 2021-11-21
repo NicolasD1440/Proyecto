@@ -40,7 +40,7 @@
           $ID = $_POST['ID_Con'];
           $sql = "SELECT * FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
                                          INNER JOIN profesores ON usuarios.Curso = profesores.Curso
-                                         INNER JOIN citas ON usuarios.fecha = citas.fecha
+                                         INNER JOIN citas ON usuarios.IDFec = citas.IDFec
                                          WHERE usuarios.Id_usuario LIKE '$ID' "; //Consulta a realizar con las tablas enlazadas
           $resultado = mysqli_query($conexion, $sql);
           $mostrar = mysqli_fetch_array($resultado);

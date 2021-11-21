@@ -135,6 +135,7 @@ h2{
   margin-bottom: 50px;
   border: 0px solid black;
   box-shadow: 1px 1px 10px black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
 }
 .poster1{ /*Caracteristicas del recuadro1 (por definir)*/
   height: 400px;
@@ -233,6 +234,7 @@ h2{
   margin-bottom: 30px;
   border: 0px solid black;
   box-shadow: 1px 1px 10px black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
 }
 .cursos1{
   height: 390px;
@@ -241,6 +243,7 @@ h2{
   margin-bottom: 30px;
   border: 0px solid black;
   box-shadow: 1px 1px 10px black;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
 }
 .Asignacion{ /*Botonen de asignar citas*/
   text-align: center;
