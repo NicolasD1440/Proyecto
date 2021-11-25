@@ -27,12 +27,21 @@
 </html>
 <?php
 error_reporting(0);
+function hashes($str){
+  $arr1 = str_split($str);
+  for ($i=0; $i <count($arr1); $i++) {
+   $arr1[$i] = ($arr1[$i] * $arr1[$i]) * $i;
+   $suma = $suma + $arr1[$i];
+  }
+  return $suma;
+}
 session_start();
 
 if (isset($_POST['Ingresar'])) {
 include('Conexion.php');
 $usuario=$_POST['usu'];
-$contraseña=$_POST['cont'];
+$aux = $_POST['cont'];
+$contraseña= hashes($aux);
 
 
 $_SESSION['Admin']=$usuario;
