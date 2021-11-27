@@ -17,6 +17,8 @@
       <form class="Form_Datos col-11 text-center"  method="post">
         <input type="text" id="Admin" name="usu" placeholder="Administrador" class="Datos col-10" required>
         <input type="password" id="Clave" name="cont" placeholder="Contraseña" class="Datos col-10" required>
+        <input type="password" id="ConfClave" name="Confcont" placeholder="Repita su contraseña" class="Datos col-10" required>
+        <label> <input type="checkbox" name="mostrar"> Mostrar contraseña</label>
         <input type="submit" name="Ingresar" value="Ingresar" class="Asignacion col-5">
         <button type="button" class="Asignacion col-5" onclick="location.href='Decision.html'">Volver</button>
       </form>
@@ -31,42 +33,61 @@ session_start();
 
 if (isset($_POST['Ingresar'])) {
 include('Conexion.php');
-$usuario=$_POST['usu'];
-$contraseña=$_POST['cont'];
+$usuario = $_POST['usu'];
+$contraseña = $_POST['cont'];
+$confContra = $_POST['confcont'];
 
 
-$_SESSION['Admin']=$usuario;
+$_SESSION['Admin'] = $usuario;
 
+if ($contraseña == $confContra) {
 
-$conexion=mysqli_connect("localhost","root","","jardin");
+    $conexion=mysqli_connect("localhost","root","","jardin");
+    $consulta = "SELECT * FROM admin where Admin ='$usuario' and Contraseña='$contraseña'";
+    $resultado = mysqli_query($conexion,$consulta);
+    $filas = mysqli_num_rows($resultado);
 
-$consulta="SELECT*FROM admin where Admin ='$usuario' and Contraseña='$contraseña'";
-$resultado=mysqli_query($conexion,$consulta);
-$filas=mysqli_num_rows($resultado);
+    if($filas){
+    ?>
+      <script type="text/javascript">
+          Swal.fire({
+            title: 'Bienvenido',
+            text:  '<?php echo utf8_decode($usuario) ?>',
+            icon: 'success',
 
-if($filas){
-?>
-  <script type="text/javascript">
-      Swal.fire({
-        title: 'Bienvenido',
-        text:  '<?php echo utf8_decode($usuario) ?>',
-        icon: 'success',
+          }).then((result) => {
 
-      }).then((result) => {
+            if (result.isConfirmed) {
+              location.href="Tabla_citas.php";
+              mysqli_free_result("Admin.php");
+            }
+          });
+        </script>;
+    <?php
+    }else{
+        ?>
+        <script type="text/javascript">
+            Swal.fire({
+              title: 'Error al ingresar',
+              text: 'verifique sus datos',
+              icon: 'error',
 
-        if (result.isConfirmed) {
-          location.href="Tabla_citas.php";
-          mysqli_free_result("Admin.php");
-        }
-      });
-    </script>;
-<?php
-}else{
+            }).then((result) => {
+
+              if (!result.isConfirmed) {
+                location.href="Admin.php";
+                mysqli_free_result("Admin.php");
+              }
+            });
+          </script>;
+      <?php
+    }
+  }else{
     ?>
     <script type="text/javascript">
         Swal.fire({
           title: 'Error al ingresar',
-          text: 'verifique sus datos',
+          text: 'Las contraseñas no coinciden',
           icon: 'error',
 
         }).then((result) => {
@@ -78,7 +99,8 @@ if($filas){
         });
       </script>;
   <?php
-}
+    }
+
 }
 mysqli_free_result($resultado);
 mysqli_close($conexion);

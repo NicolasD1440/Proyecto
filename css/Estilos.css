@@ -41,6 +41,11 @@ h2{
   color: white;
   text-shadow: 1px 1px 5px white, 1px 1px 10px white;
 }
+label{
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 .nav-item{ /*Caracteristicas de los items de la barra de navegacion*/
   font-family: 'comic sans ms';
   font-size: 2vmax;
