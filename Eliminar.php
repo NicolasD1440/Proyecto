@@ -36,10 +36,14 @@
     error_reporting(0);
       require_once("Conexion.php"); //Utilizamos el archivo de la conexion
       $ID = $_POST['ID_Con'];
+      $sql2 = "SELECT Id_usuario FROM usuarios WHERE usuarios.Id_usuario LIKE '$ID'";
       $sql = "DELETE usuarios, alumno, citas FROM usuarios INNER JOIN alumno ON usuarios.TI = alumno.TI
                                              INNER JOIN citas ON usuarios.IDFec = citas.IDFec
                                              WHERE usuarios.Id_usuario LIKE '$ID' "; //Se seleccionan las tablas y los campos con los datos que se van a eliminar
+
+    $resultado = mysqli_query($conexion, $sql2);
     if(!empty($_POST['ID_Con'])){
+      if (mysqli_num_rows($resultado) > 0) {
       mysqli_query($conexion, $sql)
       or die("
       <script>
@@ -47,6 +51,7 @@
           title: 'Problema al eliminar los datos',
           icon: 'error',
         });        </script>");//Mensaje de error
+
       ?>
         <script type="text/javascript"> //ventana emergente de confirmacion
             Swal.fire({
@@ -59,4 +64,17 @@
             }
           });
         </script>
-    <?php } ?>
+    <?php }else {
+      ?>
+        <script type="text/javascript"> //ventana emergente de confirmacion
+            Swal.fire({
+            title: 'ID invalido',
+            icon: 'error'
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href="Eliminar.php";
+            }
+          });
+        </script>
+    <?php }}?>

@@ -7,10 +7,11 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script> <!--Scripts de bootstrap-->
   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> <!--llamado del jquery-->
   <script src="https://kit.fontawesome.com/f959a384d4.js" crossorigin="anonymous"></script> <!--llamado de pagina de iconos-->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>La casita de los niños</title>
 </head>
 <body>
-    <div class="Consulta col-8"> <!--contenedor de la decicion-->
+    <div class="Consulta col-10"> <!--contenedor de la decicion-->
       <img src="img/LOGO.png" class="img-fluid" alt="Logo del jardin">
       <p>Ingrese su ID de para consultar</p>
       <form class="Form_Consulta col-11 text-center" action="Consulta.php" method="post">
@@ -32,7 +33,7 @@
           <td class="td">Correo</td>
           <td class="td">Curso de interes</td>
           <td class="td">Alumno</td>
-
+          <td class="td">Modificar</td>
         </tr>
         <?php // Cominzo de la logica
         error_reporting(0);
@@ -43,19 +44,35 @@
                                          INNER JOIN citas ON usuarios.IDFec = citas.IDFec
                                          WHERE usuarios.Id_usuario LIKE '$ID' "; //Consulta a realizar con las tablas enlazadas
           $resultado = mysqli_query($conexion, $sql);
+
+      if (!empty($_POST['ID_Con'])) {
+        if (mysqli_num_rows($resultado)>0) {
           $mostrar = mysqli_fetch_array($resultado);
           ?>
         <tr>  <?php // visualisacion de datos de consulta ?>
-          <td class="td"><?php echo $mostrar['Fecha'] ?></td>
-          <td class="td"><?php echo $mostrar['Hora'] ?></td>
-          <td class="td"><?php echo $mostrar['NombreP'] ?></td>
-          <td class="td"><?php echo $mostrar['Nombre'] ?></td>
-          <td class="td"><?php echo $mostrar['Apellido'] ?></td>
-          <td class="td"><?php echo $mostrar['Telefono'] ?></td>
-          <td class="td"><?php echo $mostrar['Correo'] ?></td>
-          <td class="td"><?php echo $mostrar['Curso'] ?></td>
-          <td class="td"><?php echo $mostrar['NombreAl'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Fecha'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Hora'] ?></td>
+          <td class="tdM"><?php echo $mostrar['NombreP'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Nombre'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Apellido'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Telefono'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Correo'] ?></td>
+          <td class="tdM"><?php echo $mostrar['Curso'] ?></td>
+          <td class="tdM"><?php echo $mostrar['NombreAl'] ?></td>
+          <td class="tdM"><button class="Modificar col-10" type="button" name="button" onclick="location.href='Modificar.php?id=<?php echo $mostrar['Id_usuario']?>'">Modificar</button></td>
         </tr>
+      <?php }
+          else {?>
+            <script type="text/javascript"> //ventana emergente de confirmacion
+              Swal.fire({
+                title: 'ID invalido',
+                icon: 'error'
+
+              });
+            </script>
+          <?php
+        }}
+       ?>
       </table>
     </div>
 <footer>© Creado por Cristian Giovani Cruz Herrera Deivy Nicolas Castiblanco Infante & Johan Daniel Chavez Celeita</footer>

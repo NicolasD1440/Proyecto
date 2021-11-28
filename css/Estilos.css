@@ -412,6 +412,29 @@ label{
   font-size: 1.2vw;
   background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
 }
+.tdM{ /*parametros del interior de la tabla*/
+  border: 1px solid black;
+  height: 50px;
+  color: white;
+  font-family: 'comic sans ms';
+  font-size: 1.2vw;
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+}
+.Modificar{
+  background: linear-gradient( 180deg, #001A8D, #1468F1, #001A8D);
+  height: 30px;
+  font-size: 12px;
+  color: white;
+}
+.Modificar:hover{
+  background: linear-gradient( to bottom, #650000 , #EA3E3E , #650000);
+  text-shadow: 1px 1px 5px white;
+  box-shadow: 1px 1px 5px black;
+  border: none;
+}
+.Anterior{
+  color: red;
+}
 #Pendon1{
   margin-top: 50px;
   width: 60%;

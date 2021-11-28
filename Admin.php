@@ -18,7 +18,7 @@
         <input type="text" id="Admin" name="usu" placeholder="Administrador" class="Datos col-10" required>
         <input type="password" id="Clave" name="cont" placeholder="Contraseña" class="Datos col-10" required>
         <input type="password" id="ConfClave" name="Confcont" placeholder="Repita su contraseña" class="Datos col-10" required>
-        <label> <input type="checkbox" name="mostrar"> Mostrar contraseña</label>
+        <label> <input type="checkbox" id="check" name="mostrar" onclick="Mostrar()"> Mostrar contraseña</label>
         <input type="submit" name="Ingresar" value="Ingresar" class="Asignacion col-5">
         <button type="button" class="Asignacion col-5" onclick="location.href='Decision.html'">Volver</button>
       </form>
@@ -27,6 +27,20 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
+<script type="text/javascript">
+  function Mostrar() {
+    var pass = document.getElementById("Clave");
+    var Confpass = document.getElementById("ConfClave");
+    if(document.getElementById("check").checked){
+        pass.type = 'text';
+        Confpass.type = 'text';
+    }
+    else{
+      pass.type = 'password';
+      Confpass.type = 'password';
+    }
+  }
+</script>
 <?php
 error_reporting(0);
 function hashes($str){
@@ -41,14 +55,17 @@ session_start();
 
 if (isset($_POST['Ingresar'])) {
 include('Conexion.php');
-$usuario=$_POST['usu'];
+$usuario = $_POST['usu'];
 $aux = $_POST['cont'];
-$contraseña= hashes($aux);
+$aux2 = $_POST['Confcont'];
+$contraseña = hashes($aux);
+$confCont = hashes($aux2);
+
 
 
 $_SESSION['Admin'] = $usuario;
 
-if ($contraseña == $confContra) {
+if ($contraseña == $confCont) {
 
     $conexion=mysqli_connect("localhost","root","","jardin");
     $consulta = "SELECT * FROM admin where Admin ='$usuario' and Contraseña='$contraseña'";
